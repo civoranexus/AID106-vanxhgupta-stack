@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a;
+    char ch;
+    double d;
+
+    try {
+        cout << "Enter an integer value: ";
+        cin >> a;
+        if (cin.fail())
+            throw a; // throws int exception if invalid input
+
+        cout << "Enter a character value: ";
+        cin >> ch;
+        if (isdigit(ch))
+            throw ch; // throws char exception if user enters a digit instead of char
+
+        cout << "Enter a double value: ";
+        cin >> d;
+        if (cin.fail())
+            throw d; // throws double exception if invalid double input
+
+        cout << "\nAll inputs accepted successfully!" << endl;
+        cout << "Integer: " << a << ", Character: " << ch << ", Double: " << d << endl;
+    }
+
+    catch (int) {
+        cout << "\nException caught: Invalid Integer Input!" << endl;
+    }
+    catch (char) {
+        cout << "\nException caught: Invalid Character Input!" << endl;
+    }
+    catch (double) {
+        cout << "\nException caught: Invalid Double Input!" << endl;
+    }
+    catch (...) {
+        cout << "\nUnknown Exception occurred!" << endl;
+    }
+
+    return 0;
+}
